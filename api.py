@@ -1,7 +1,9 @@
 from flask import Flask, jsonify, request
 from db import SessionLocal, Measurement
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 @app.get("/api/latest")
 def latest():
